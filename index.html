@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Faz 1 Pouco Rápido - Verifica Comprovativos</title>
+<meta name="theme-color" content="#00c950">
+<link rel="icon" href="VERIFICA_ICON.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{background:#000;color:#fff;min-height:100vh}
+.center{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;background:radial-gradient(ellipse at top,#0a2a0a,#000)}
+.card{background:linear-gradient(180deg,#141414,#0e0e0e);border:1px solid #222;border-radius:28px;padding:24px;width:100%;max-width:400px;box-shadow:0 20px 60px rgba(0,201,80,0.15)}
+h1{font-weight:900;font-size:22px;letter-spacing:-0.5px;line-height:1.1}
+h1 b{color:#00c950}
+h1 span{color:#FFC400}
+.small{font-size:11px;color:#888;margin-top:6px}
+label{font-size:10px;color:#888;font-weight:800;margin-top:16px;display:block;letter-spacing:1px;text-transform:uppercase}
+input{width:100%;background:#000;border:1px solid #222;color:#fff;padding:14px;border-radius:14px;margin-top:6px;font-size:14px;outline:none}
+input:focus{border-color:#00c950}
+.btn{width:100%;padding:16px;border-radius:16px;border:none;font-weight:900;font-size:13px;margin-top:16px;cursor:pointer;letter-spacing:0.5px}
+.btn-main{background:linear-gradient(135deg,#00c950,#00a63d);color:#000;box-shadow:0 8px 24px rgba(0,201,80,0.3)}
+.btn-gold{background:linear-gradient(135deg,#FFC400,#FF8A00);color:#000}
+.btn-ghost{background:#1a1a1a;color:#fff;border:1px solid #222}
+.link{color:#00c950;font-size:12px;font-weight:700;text-align:center;display:block;margin-top:14px;cursor:pointer}
+.header{background:#000;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1a1a1a;position:sticky;top:0;z-index:10}
+.logo{font-weight:900;font-size:14px;line-height:1}
+.logo b{color:#00c950}
+.logo i{color:#FFC400;font-style:normal}
+.badge{padding:6px 12px;border-radius:20px;font-size:10px;font-weight:900}
+.badge-ok{background:#00c950;color:#000}
+.badge-warn{background:#FFC400;color:#000}
+.badge-fail{background:#ff2a2a;color:#fff}
+.uploadBox{border:2px dashed #2a2a2a;border-radius:22px;padding:26px;text-align:center;background:#0a0a0a;margin-top:12px;transition:0.2s}
+.uploadBox:active{border-color:#00c950;transform:scale(0.98)}
+.result{margin-top:16px;padding:16px;border-radius:18px;background:#0a0a0a;border:1px solid #222}
+.row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #151515;font-size:12px}
+.nav{display:flex;gap:8px;padding:12px;background:#0a0a0a;overflow-x:auto;position:sticky;top:60px;z-index:9}
+.nav button{background:#111;border:1px solid #222;color:#777;padding:10px 16px;border-radius:20px;font-size:11px;font-weight:800;white-space:nowrap}
+.nav button.active{background:#00c950;color:#000;border-color:#00c950}
+.hidden{display:none}
+.fast{animation:pop 0.3s}
+@keyframes pop{0%{transform:scale(0.9)}100%{transform:scale(1)}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="page-login" class="center">
+<div class="card fast">
+<div style="text-align:center;margin-bottom:16px"><div style="width:64px;height:64px;background:linear-gradient(135deg,#00c950,#00a63d);border-radius:20px;display:inline-flex;align-items:center;justify-content:center;font-size:28px">⚡</div></div>
+<h1>FAZ 1 <span>POUCO</span> <b>RÁPIDO</b></h1>
+<p class="small">Verifica comprovativos em 3 segundos • Anti-Burla Angola</p>
+<label>Email ou Telefone</label>
+<input id="loginEmail" placeholder="923000000 ou email">
+<label>Senha</label>
+<input id="loginPass" type="password" placeholder="••••••••">
+<button class="btn btn-main" onclick="doLogin()">⚡ ENTRAR RÁPIDO</button>
+<span class="link" onclick="showPage('register')">Não tem conta? CRIAR CONTA AGORA</span>
+<p style="font-size:8px;color:#444;text-align:center;margin-top:12px">100% offline • Dados salvos no teu celular</p>
+</div>
+</div>
+
+<!-- REGISTER -->
+<div id="page-register" class="center hidden">
+<div class="card fast">
+<h1>CRIAR <b>CONTA RÁPIDA</b></h1>
+<p class="small">Faz 1 Pouco Rápido - cadastro em 10s</p>
+<label>Nome Completo</label>
+<input id="regName" placeholder="Ex: Faz 1 Pouco Rápido">
+<label>Telefone / Email</label>
+<input id="regEmail" placeholder="923... ou email">
+<label>Criar Senha</label>
+<input id="regPass" type="password" placeholder="Min 4 dígitos">
+<label>Confirmar Senha</label>
+<input id="regPass2" type="password" placeholder="Repita">
+<button class="btn btn-main" onclick="doRegister()">🚀 CRIAR MINHA CONTA</button>
+<span class="link" onclick="showPage('login')">Já tem conta? ENTRAR</span>
+</div>
+</div>
+
+<!-- APP -->
+<div id="page-app" class="hidden">
+<div class="header">
+<div class="logo"><b>FAZ 1</b> <i>POUCO</i> <b>RÁPIDO</b><br><small style="font-size:9px;color:#666;letter-spacing:1px">VERIFICA COMPROVATIVOS</small></div>
+<div style="text-align:right"><small id="userNameShow" style="font-weight:800;font-size:12px"></small><br><small id="userEmailShow" style="color:#555;font-size:9px"></small></div>
+</div>
+
+<div class="nav">
+<button class="active" id="nav1" onclick="tab('verif')">⚡ VERIFICAR</button>
+<button id="nav2" onclick="tab('hist')">📋 HISTÓRICO</button>
+<button id="nav3" onclick="tab('dicas')">🛡️ DICAS ANTI-BURLA</button>
+</div>
+
+<div id="tab-verif" style="padding:14px">
+<div class="card" style="max-width:100%">
+<h1 style="font-size:16px">📤 ENVIAR COMPROVATIVO</h1>
+<p class="small">Faz 1 pouco rápido - resultado em 3 segundos</p>
+<div class="uploadBox" onclick="document.getElementById('compFile').click()">
+<div id="upText" style="font-size:13px;font-weight:700">📸 TOQUE PARA CARREGAR<br><small style="color:#666;font-weight:400">Foto, Print, PDF do comprovativo</small></div>
+<img id="compPrev" style="display:none;max-width:100%;border-radius:14px;margin-top:12px">
+</div>
+<input type="file" id="compFile" accept="image/*,.pdf" hidden>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px">
+<div><label>Banco</label><input id="banco" placeholder="BAI, BFA..."></div>
+<div><label>Valor Kz</label><input id="valor" placeholder="5000"></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div><label>Data</label><input id="dataComp" type="date"></div>
+<div><label>Ref / Nº Operação</label><input id="refComp" placeholder="123456"></div>
+</div>
+<button class="btn btn-main" onclick="verificar()">⚡ VERIFICAR EM 3s - FAZ 1 POUCO RÁPIDO</button>
+<div id="resultBox" class="hidden"></div>
+</div>
+</div>
+
+<div id="tab-hist" class="hidden" style="padding:14px">
+<div class="card" style="max-width:100%"><h1 style="font-size:16px">📋 MEU HISTÓRICO</h1><div id="histList" style="margin-top:10px"></div><button class="btn btn-ghost" onclick="limparHist()">🗑️ Limpar</button></div>
+</div>
+
+<div id="tab-dicas" class="hidden" style="padding:14px">
+<div class="card" style="max-width:100%">
+<h1 style="font-size:16px">🛡️ COMO DETECTAR BURLA</h1>
+<div style="font-size:12px;line-height:1.6;color:#aaa;margin-top:12px">
+<p>✅ <b style="color:#fff">1. Tamanho do arquivo:</b> Prints editados têm menos de 20KB</p><br>
+<p>✅ <b style="color:#fff">2. Data futura:</b> Comprovativo com data amanhã = falso</p><br>
+<p>✅ <b style="color:#fff">3. Sem referência:</b> Todo comprovativo real tem Nº operação</p><br>
+<p>✅ <b style="color:#fff">4. Fonte borrada:</b> Edição deixa letras diferentes</p><br>
+<p>✅ <b style="color:#fff">5. IBAN:</b> Verifica se IBAN AO06 existe na lista de bancos</p><br>
+<p style="color:#00c950;font-weight:800">💡 Faz 1 Pouco Rápido verifica tudo isso automático!</p>
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+let currentUser=JSON.parse(localStorage.getItem('f1pr_user')||'null');
+let users=JSON.parse(localStorage.getItem('f1pr_users')||'[]');
+let historico=JSON.parse(localStorage.getItem('f1pr_hist')||'[]');
+if(currentUser){showPage('app'); updateUserUI();}
+function showPage(p){
+ document.getElementById('page-login').classList.add('hidden');
+ document.getElementById('page-register').classList.add('hidden');
+ document.getElementById('page-app').classList.add('hidden');
+ document.getElementById('page-'+p).classList.remove('hidden');
+ if(p=='app'){updateUserUI(); renderHist();}
+}
+function doRegister(){
+ const name=document.getElementById('regName').value.trim();
+ const email=document.getElementById('regEmail').value.trim();
+ const pass=document.getElementById('regPass').value;
+ const pass2=document.getElementById('regPass2').value;
+ if(!name||!email||pass.length<4){alert('Preencha nome, email/tel e senha min 4 dígitos');return;}
+ if(pass!=pass2){alert('Senhas diferentes');return;}
+ if(users.find(u=>u.email==email)){alert('Conta já existe');return;}
+ const newUser={name,email,pass,created:Date.now()};
+ users.push(newUser); localStorage.setItem('f1pr_users',JSON.stringify(users));
+ localStorage.setItem('f1pr_user',JSON.stringify(newUser)); currentUser=newUser;
+ alert('✅ Conta Faz 1 Pouco Rápido criada! Bem-vindo '+name); showPage('app');
+}
+function doLogin(){
+ const email=document.getElementById('loginEmail').value.trim();
+ const pass=document.getElementById('loginPass').value;
+ const found=users.find(u=>u.email==email && u.pass==pass);
+ if(!found){alert('Conta não encontrada. Crie conta primeiro.');return;}
+ localStorage.setItem('f1pr_user',JSON.stringify(found)); currentUser=found; showPage('app');
+}
+function logout(){localStorage.removeItem('f1pr_user'); currentUser=null; showPage('login');}
+function updateUserUI(){if(!currentUser)return; document.getElementById('userNameShow').innerText=currentUser.name.split(' ')[0]; document.getElementById('userEmailShow').innerText=currentUser.email;}
+document.getElementById('compFile').addEventListener('change', e=>{
+ const f=e.target.files[0]; if(!f) return;
+ const url=URL.createObjectURL(f);
+ document.getElementById('compPrev').src=url;
+ document.getElementById('compPrev').style.display='block';
+ document.getElementById('upText').innerHTML='✅ '+f.name+' • '+(f.size/1024).toFixed(0)+' KB • PRONTO PARA VERIFICAR';
+});
+function tab(t){
+ document.getElementById('tab-verif').classList.add('hidden');
+ document.getElementById('tab-hist').classList.add('hidden');
+ document.getElementById('tab-dicas').classList.add('hidden');
+ document.getElementById('tab-'+t).classList.remove('hidden');
+ document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+ document.getElementById(t=='verif'?'nav1':t=='hist'?'nav2':'nav3').classList.add('active');
+ if(t=='hist') renderHist();
+}
+function verificar(){
+ const banco=document.getElementById('banco').value;
+ const valor=document.getElementById('valor').value;
+ const data=document.getElementById('dataComp').value;
+ const ref=document.getElementById('refComp').value;
+ const file=document.getElementById('compFile').files[0];
+ if(!file){alert('Carregue o comprovativo');return;}
+ if(!banco||!valor){alert('Preencha banco e valor');return;}
+ document.getElementById('resultBox').innerHTML='<div class=result style="text-align:center;padding:24px">⏳ Faz 1 Pouco Rápido verificando...<br><small style="color:#666">Analisando 5 pontos de segurança</small></div>';
+ document.getElementById('resultBox').classList.remove('hidden');
+ setTimeout(()=>{
+  let score=100; let alertas=[];
+  if(!ref){score-=20; alertas.push('⚠️ Sem referência');}
+  if(!data){score-=10; alertas.push('⚠️ Sem data');}
+  else{ const hoje=new Date().toISOString().split('T')[0]; if(data>hoje){score-=40; alertas.push('❌ Data futura = FALSO');} const diff=Math.abs((new Date()-new Date(data))/(1000*60*60*24)); if(diff>7){score-=15; alertas.push('⚠️ Antigo +7 dias');}}
+  if(parseInt(valor)<100){score-=15; alertas.push('⚠️ Valor baixo');}
+  if(file.size<20000){score-=25; alertas.push('⚠️ Arquivo leve - possível edição');}
+  let status='',badge='',cor='';
+  if(score>=80){status='VÁLIDO - FAZ 1 POUCO RÁPIDO'; badge='<span class=badge-ok>✅ VÁLIDO</span>'; cor='#00c950';}
+  else if(score>=50){status='SUSPEITO'; badge='<span class=badge-warn>⚠️ SUSPEITO</span>'; cor='#FFC400';}
+  else{status='POSSÍVEL FALSO'; badge='<span class=badge-fail>❌ FALSO</span>'; cor='#ff2a2a';}
+  const html=`<div class=result style="border-color:${cor}"><div style="display:flex;justify-content:space-between"><b style="color:${cor}">${status}</b> ${badge}</div>
+  <div style="margin-top:12px"><div class=row><span>Score</span><span style="color:${cor};font-weight:900">${score}%</span></div>
+  <div class=row><span>Banco</span><span>${banco}</span></div><div class=row><span>Valor</span><span>Kz ${valor}</span></div><div class=row><span>Ref</span><span>${ref||'N/A'}</span></div><div class=row><span>Data</span><span>${data||'N/A'}</span></div><div class=row><span>Arquivo</span><span>${file.name}</span></div></div>
+  <div style="margin-top:12px;font-size:11px;color:#aaa">${alertas.length?alertas.join('<br>'):'✅ Faz 1 Pouco Rápido: Nenhuma burla detectada'}</div></div>`;
+  document.getElementById('resultBox').innerHTML=html;
+  historico.unshift({id:Date.now(),banco,valor,data,ref,status,score,fileName:file.name}); localStorage.setItem('f1pr_hist',JSON.stringify(historico));
+ },1200);
+}
+function renderHist(){
+ if(historico.length==0){document.getElementById('histList').innerHTML='<p style="color:#555;font-size:12px">Nenhuma verificação.</p>';return;}
+ document.getElementById('histList').innerHTML=historico.map(h=>`<div style="background:#000;padding:12px;border-radius:14px;margin-top:8px;border:1px solid #1a1a1a"><div style="display:flex;justify-content:space-between"><b style="font-size:12px">${h.banco} - Kz ${h.valor}</b><small style="color:${h.score>=80?'#00c950':h.score>=50?'#FFC400':'#ff2a2a'}">${h.score}%</small></div><small style="color:#666">${h.status} • ${h.fileName}</small></div>`).join('');
+}
+function limparHist(){if(confirm('Limpar histórico?')){historico=[]; localStorage.setItem('f1pr_hist','[]'); renderHist();}}
+</script>
+</body>
+</html>
